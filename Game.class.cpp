@@ -76,6 +76,7 @@ void Game::ActionsEnemys() {
 			if (collisions(this->Cruiser.getX() + j, this->Cruiser.getY(), Bob[i].getX(), Bob[i].getY())) {
 				
 				refresh();
+				system("afplay explosion.mp3&");
 				system("reset");
 				exit(1);
 			}
@@ -101,6 +102,7 @@ void Game::CreateBullet() {
 
 		if (Bull[i].getFired() == 0) {
 			
+			system("afplay blaster.wav&");
 			Bull[i].setFired(1);
 			Bull[i].setX(Cruiser.getX());
 			Bull[i].setY(Cruiser.getY());
@@ -127,6 +129,7 @@ void Game::moveBullets() {
 						Bull[i].setFired(0);
 						Bob[x].setX(1);
 						this->_score += 10;
+						system("afplay collision.flac&");
 					}
 				}
 			}
