@@ -54,22 +54,30 @@ Enemy &Enemy::operator=(Enemy const &ref) {
 void Enemy::drawEnemy() {
 
 	attron (COLOR_PAIR (1));
-	mvaddstr((int)this->_y, (int)this->_x, "<}}");
+	mvaddch((int)this->_y, (int)this->_x, '<');
+	mvaddch((int)this->_y, (int)this->_x + 1, '}');
+	mvaddch((int)this->_y, (int)this->_x + 2, '}');
 	attroff (COLOR_PAIR (1));
 }
 
 void Enemy::moveEnemy() {
 
-	int i = 0;
-
 	if (this->_x < 0) {
 		
-		srand(clock());
-		i = rand() % getmaxx(stdscr);
-		this->_x = getmaxx(stdscr) + i;
+		this->setX(1);
 		if (this->_speed < MAX_SPEED)
 			this->_speed += 0.2;
 	}
 	else
 		this->_x -= this->_speed;
+}
+
+void Enemy::setX(float x) {
+	
+	int i = 0;
+
+	x = 0;
+	srand(clock());
+	i = rand() % getmaxx(stdscr);
+	this->_x = getmaxx(stdscr) + i;
 }

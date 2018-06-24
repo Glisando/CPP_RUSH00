@@ -22,7 +22,7 @@
 # define SPEED 0.5
 # define MAX_SPEED 3
 # define NUM_ENEMY 45 
-# define NUM_BULLETS 1
+# define NUM_BULLETS 12
 
 class Game {
 
@@ -43,4 +43,5 @@ class Game {
 		int collisions(int x1, int y1, int x2, int y2);
 		void hookKey();
 		void CreateBullet();
+		void moveBullets();
 };

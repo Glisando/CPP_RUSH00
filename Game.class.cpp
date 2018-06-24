@@ -44,7 +44,7 @@ void Game::StartGame() {
 	curs_set(0);
 	keypad(stdscr, true);
 	start_color ();
-	init_pair (1, COLOR_RED, COLOR_BLACK);
+	init_pair (1, COLOR_YELLOW, COLOR_BLACK);
 	timeout(1);
 	t2 = 0;
 	while (1)
@@ -59,6 +59,7 @@ void Game::StartGame() {
 					mvaddch((getmaxy(stdscr) / 3) - 10, i, '-');
 			Game::ActionsEnemys();
 			this->Cruiser.drawShip();
+			Game::moveBullets();
 			Game::hookKey();
 			t2 = clock() / (CLOCKS_PER_SEC / FPS);
 			refresh();	
@@ -80,7 +81,6 @@ void Game::ActionsEnemys() {
 			}
 		}
 		Bob[i].drawEnemy();
-
 	}
 	for (int i = 0; i < NUM_ENEMY; i++) {
 
@@ -97,17 +97,43 @@ int Game::collisions(int x1, int y1, int x2, int y2) {
 
 void Game::CreateBullet() {
 
-	int i = -1;
+	for (int i = 0; i < NUM_BULLETS; i++) {
 
-	while (++i < NUM_BULLETS) {
-
-		if (!Bull[i].getFired) {
+		if (Bull[i].getFired() == 0) {
 			
+			Bull[i].setFired(1);
+			Bull[i].setX(Cruiser.getX());
+			Bull[i].setY(Cruiser.getY());
 			Bull[i].drawBullet();
 			Bull[i].moveBullet();
+			break ;
 		}
 	}
 }
+
+void Game::moveBullets() {
+
+	for (int i = 0; i < NUM_BULLETS; i++) {
+
+		if (Bull[i].getFired() == 1) {
+	
+			Bull[i].moveBullet();
+			for (int x = 0; x < NUM_ENEMY; x++) {
+			
+				for (int z = 0; z < 3; z++) {
+
+					if (collisions(Bull[i].getX(), Bull[i].getY(), Bob[x].getX() + z, Bob[x].getY())) {
+						
+						Bull[i].setFired(0);
+						Bob[x].setX(1);	
+					}
+				}
+			}
+			Bull[i].drawBullet();
+		}
+	}
+}
+
 
 void Game::hookKey() {
 
@@ -128,8 +154,6 @@ void Game::hookKey() {
 		Cruiser.drawShipLeft();
 	if (key == 100)
 		Cruiser.drawShipRight();
-	if (key == 32) {
-		
-		// Game::CreateBullet();
-	}
+	if (key == 32)
+		Game::CreateBullet();
 }

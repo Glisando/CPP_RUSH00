@@ -23,6 +23,8 @@ class Enemy : public Unit {
 
 		Enemy &operator=(Enemy const &ref);
 
+		void setX(float x);
+
 		void drawEnemy();
 		void moveEnemy();
 };

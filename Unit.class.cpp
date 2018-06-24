@@ -48,3 +48,13 @@ float Unit::getSpeed() const {
 
 	return (this->_speed);
 }
+
+void Unit::setX(float x) {
+
+	this->_x = x;
+}
+
+void Unit::setY(float y) {
+
+	this->_y = y;
+}

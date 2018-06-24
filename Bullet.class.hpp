@@ -15,7 +15,6 @@
 
 class Bullet : public Unit {
 
-
 	private:
 		int _fired;
 
@@ -27,7 +26,8 @@ class Bullet : public Unit {
 
 		Bullet &operator=(Bullet const &ref);
 
-		int getFired() {
+		void setFired(int fired);
+		int getFired() const;
 
 		void drawBullet();
 		void moveBullet();

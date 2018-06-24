@@ -32,6 +32,8 @@ class Unit {
 		float getX() const;
 		float getY() const;
 		float getSpeed() const;
+		void setX(float x);
+		void setY(float y);
 	
 };
 

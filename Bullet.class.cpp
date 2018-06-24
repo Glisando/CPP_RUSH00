@@ -16,7 +16,7 @@ Bullet::Bullet() : Unit() {
 
 	this->_x = 0;
 	this->_y = 20;
-	this->_speed = 2;
+	this->_speed = 1;
 	this->_fired = 0;
 }
 
@@ -24,7 +24,7 @@ Bullet::Bullet(float x, float y) : Unit() {
 
 	this->_x = x + 6;
 	this->_y = y;
-	this->_speed = 2;
+	this->_speed = 1;
 	this->_fired = 0;
 }
 
@@ -54,10 +54,18 @@ void Bullet::drawBullet() {
 }
 void Bullet::moveBullet() {
 
-	this->_x += this->_speed;
+	if (this->_x >= getmaxx(stdscr))
+		this->_fired = 0;
+	else
+		this->_x += this->_speed;
 }
 
-int Bullet::getFired() {
+int Bullet::getFired() const {
 
 	return (this->_fired);
+}
+
+void Bullet::setFired(int fired) {
+
+	this->_fired = fired;
 }
