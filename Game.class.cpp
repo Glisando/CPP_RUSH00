@@ -12,7 +12,7 @@
 
 #include "Game.class.hpp"
 
-Game::Game() {
+Game::Game() : _num_bullets(13) , _score(0) {
 
 }
 
@@ -97,7 +97,7 @@ int Game::collisions(int x1, int y1, int x2, int y2) {
 
 void Game::CreateBullet() {
 
-	for (int i = 0; i < NUM_BULLETS; i++) {
+	for (int i = 0; i < this->_num_bullets; i++) {
 
 		if (Bull[i].getFired() == 0) {
 			
@@ -113,7 +113,7 @@ void Game::CreateBullet() {
 
 void Game::moveBullets() {
 
-	for (int i = 0; i < NUM_BULLETS; i++) {
+	for (int i = 0; i < this->_num_bullets; i++) {
 
 		if (Bull[i].getFired() == 1) {
 	
@@ -125,7 +125,8 @@ void Game::moveBullets() {
 					if (collisions(Bull[i].getX(), Bull[i].getY(), Bob[x].getX() + z, Bob[x].getY())) {
 						
 						Bull[i].setFired(0);
-						Bob[x].setX(1);	
+						Bob[x].setX(1);
+						this->_score += 10;
 					}
 				}
 			}

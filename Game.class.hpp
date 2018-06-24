@@ -18,18 +18,18 @@
 #include <sys/time.h>
 
 # define FPS 60
-# define NUM_ENEMY 45
 # define SPEED 0.5
 # define MAX_SPEED 3
 # define NUM_ENEMY 45 
-# define NUM_BULLETS 12
 
 class Game {
 
 	private:
 		Enemy Bob[NUM_ENEMY + 1];
 		StarShip Cruiser;
-		Bullet Bull[NUM_BULLETS + 1];
+		Bullet Bull[13 + 1];
+		int _num_bullets;
+		int _score;
 
 	public:
 		Game();
