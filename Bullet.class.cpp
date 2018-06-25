@@ -48,9 +48,9 @@ Bullet &Bullet::operator=(Bullet const &ref) {
 
 void Bullet::drawBullet() {
 
-	attron (COLOR_PAIR (1));
+	attron (COLOR_PAIR (3));
 	mvaddch(this->_y, this->_x, '*');
-	attroff (COLOR_PAIR (1));
+	attroff (COLOR_PAIR (3));
 }
 void Bullet::moveBullet() {
 

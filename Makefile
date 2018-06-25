@@ -16,10 +16,11 @@ SRC =	main.cpp \
 		Unit.class.cpp \
 		Enemy.class.cpp \
 		Game.class.cpp \
-		Bullet.class.cpp
+		Bullet.class.cpp \
+		Menu.class.cpp
 
 OBJ = $(SRC:.cpp=.o)
-HDRS = StarShip.class.hpp Unit.class.hpp Enemy.class.hpp Game.class.hpp Bullet.class.hpp
+HDRS = StarShip.class.hpp Unit.class.hpp Enemy.class.hpp Game.class.hpp Bullet.class.hpp Menu.class.hpp
 CLANG++ = clang++
 CL_FLAGS = -Wall -Werror -Wextra -std=c++98
 NCURS = -O3 -lncurses

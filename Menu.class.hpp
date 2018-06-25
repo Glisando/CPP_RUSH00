@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Menu.class.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekruhliu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/23 12:54:31 by ekruhliu          #+#    #+#             */
-/*   Updated: 2018/06/23 12:54:32 by ekruhliu         ###   ########.fr       */
+/*   Created: 2018/06/24 11:51:22 by ekruhliu          #+#    #+#             */
+/*   Updated: 2018/06/24 11:51:22 by ekruhliu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Game.class.hpp"
+#ifndef MENU_CLASS_CPP
+# define MENU_CLASS_CPP
 
-int	main() {
-	Game StarWars;
+class Menu {
 
-	srand(clock());
+	public:
+		Menu();
+		Menu(Menu const &ref);
+		~Menu();
 
-	StarWars.StartGame();
-	return 0;
-}
+		Menu &operator=(Menu const &ref);
+
+		int drawMenu();
+		int getI() const;	
+		int choseFPS();
+		int getFPS() const;
+		void setFPS(int fps);
+		void gameOver();
+	private:
+		int i;
+		int fps;
+};
+
+#endif

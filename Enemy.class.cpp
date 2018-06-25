@@ -24,7 +24,6 @@ Enemy::Enemy() : Unit() {
 		this->_x = getmaxx(stdscr) - 50 + i;
 	else
 		this->_x = getmaxx(stdscr) - 50 - i;
-	srand(clock());
 	i = rand() % 30;
 	if (i % 2 == 0)
 		this->_y = 30 + i;
@@ -77,7 +76,6 @@ void Enemy::setX(float x) {
 	int i = 0;
 
 	x = 0;
-	srand(clock());
 	i = rand() % getmaxx(stdscr);
 	this->_x = getmaxx(stdscr) + i;
 }

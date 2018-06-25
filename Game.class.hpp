@@ -14,13 +14,14 @@
 #include "Unit.class.hpp"
 #include "Bullet.class.hpp"
 #include "Enemy.class.hpp"
+#include "Menu.class.hpp"
 #include <ctime>
 #include <sys/time.h>
 
 # define FPS 60
 # define SPEED 0.5
 # define MAX_SPEED 3
-# define NUM_ENEMY 45 
+# define NUM_ENEMY 80 
 
 class Game {
 
@@ -28,8 +29,10 @@ class Game {
 		Enemy Bob[NUM_ENEMY + 1];
 		StarShip Cruiser;
 		Bullet Bull[13 + 1];
+		Menu	menu;
 		int _num_bullets;
 		int _score;
+		int _lives;
 
 	public:
 		Game();
@@ -40,7 +43,7 @@ class Game {
 
 		void StartGame();
 		void ActionsEnemys();
-		int collisions(int x1, int y1, int x2, int y2);
+		int collisions(int x1, int y1, int x2, int y2, std::string type);
 		void hookKey();
 		void CreateBullet();
 		void moveBullets();
